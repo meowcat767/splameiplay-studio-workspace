@@ -98,7 +98,10 @@ namespace SplameiPlay.Studio
                 }
                 else if (valueData.dataType == SplameiPlayFiles.fileValueDataType.String)
                 {
-                    keyStringValue.Lines = valueData.stringValue.Split(new string[] { "\n" }, StringSplitOptions.None);
+                    if (!string.IsNullOrEmpty(valueData.stringValue))
+                    {
+                        keyStringValue.Lines = valueData.stringValue.Split(new string[] { "\n" }, StringSplitOptions.None);
+                    }
                     keyStringValue.Enabled = true;
                 }
             }
