@@ -98,5 +98,13 @@ namespace SplameiPlay.Studio
                 }
             }
         }
+
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            using (About about = new About())
+            {
+                about.ShowDialog();
+            }
+        }
     }
 }

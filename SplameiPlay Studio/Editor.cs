@@ -7,6 +7,7 @@
 using SplameiPlay.SDK.Files;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -449,6 +450,19 @@ namespace SplameiPlay.Studio
         private void collapseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             treeView1.CollapseAll();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (About about = new About())
+            {
+                about.ShowDialog();
+            }
+        }
+
+        private void splameiDocsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Process.Start("https://docs.veemo.uk")) { }
         }
     }
 }

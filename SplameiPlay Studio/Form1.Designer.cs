@@ -43,6 +43,7 @@ namespace SplameiPlay.Studio
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.splameiDocsButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.aboutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -91,9 +92,9 @@ namespace SplameiPlay.Studio
             // quitButton
             // 
             this.quitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.quitButton.Location = new System.Drawing.Point(18, 333);
+            this.quitButton.Location = new System.Drawing.Point(16, 333);
             this.quitButton.Name = "quitButton";
-            this.quitButton.Size = new System.Drawing.Size(145, 44);
+            this.quitButton.Size = new System.Drawing.Size(95, 44);
             this.quitButton.TabIndex = 5;
             this.quitButton.Text = "Quit";
             this.quitButton.UseVisualStyleBackColor = true;
@@ -101,16 +102,15 @@ namespace SplameiPlay.Studio
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "Installer File|*.spinstaller|Theme File|*.sptheme|Policy / SplameiPlay File|*.spl" +
-    "ameiplay";
+            this.openFileDialog1.Filter = "SplameiPlay File|*.splameiplay|Installer File|*.spinstaller|Theme File|*.sptheme";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // splameiDocsButton
             // 
             this.splameiDocsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.splameiDocsButton.Location = new System.Drawing.Point(169, 333);
+            this.splameiDocsButton.Location = new System.Drawing.Point(117, 333);
             this.splameiDocsButton.Name = "splameiDocsButton";
-            this.splameiDocsButton.Size = new System.Drawing.Size(143, 44);
+            this.splameiDocsButton.Size = new System.Drawing.Size(95, 44);
             this.splameiDocsButton.TabIndex = 6;
             this.splameiDocsButton.Text = "Splamei Docs";
             this.splameiDocsButton.UseVisualStyleBackColor = true;
@@ -125,10 +125,22 @@ namespace SplameiPlay.Studio
             this.label2.Text = "SplameiPlay Studio is intended for project developers,\r\ndistributors and system a" +
     "dministrators and is not for\r\ngeneral public use.";
             // 
+            // aboutButton
+            // 
+            this.aboutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.aboutButton.Location = new System.Drawing.Point(217, 333);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(95, 44);
+            this.aboutButton.TabIndex = 8;
+            this.aboutButton.Text = "About";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(329, 434);
+            this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.splameiDocsButton);
             this.Controls.Add(this.quitButton);
@@ -161,6 +173,7 @@ namespace SplameiPlay.Studio
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button splameiDocsButton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button aboutButton;
     }
 }
 
