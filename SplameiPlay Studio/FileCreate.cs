@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace SplameiPlay.Studio
@@ -83,6 +84,11 @@ namespace SplameiPlay.Studio
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void FileCreate_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            using (Process.Start("https://docs.veemo.uk")) { }
         }
     }
 }

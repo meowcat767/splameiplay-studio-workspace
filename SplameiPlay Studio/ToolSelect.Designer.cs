@@ -38,10 +38,10 @@ namespace SplameiPlay.Studio
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolSelect));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.getFileHash = new System.Windows.Forms.Button();
-            this.getDirectoryHash = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.getDirectoryHash = new System.Windows.Forms.Button();
+            this.getFileHash = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -71,25 +71,16 @@ namespace SplameiPlay.Studio
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hashing";
             // 
-            // label2
+            // textBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(239, 39);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Use this tool to get the hash of a project\'s release\r\nfile so that SplameiPlay ca" +
-    "n install the project\r\ncorrectly.";
-            // 
-            // getFileHash
-            // 
-            this.getFileHash.Location = new System.Drawing.Point(6, 92);
-            this.getFileHash.Name = "getFileHash";
-            this.getFileHash.Size = new System.Drawing.Size(249, 23);
-            this.getFileHash.TabIndex = 1;
-            this.getFileHash.Text = "Get zip hash";
-            this.getFileHash.UseVisualStyleBackColor = true;
-            this.getFileHash.Click += new System.EventHandler(this.getFileHash_Click);
+            this.textBox1.Location = new System.Drawing.Point(9, 162);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(246, 74);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "The hash will be displayed here";
             // 
             // getDirectoryHash
             // 
@@ -101,16 +92,25 @@ namespace SplameiPlay.Studio
             this.getDirectoryHash.UseVisualStyleBackColor = true;
             this.getDirectoryHash.Click += new System.EventHandler(this.getDirectoryHash_Click);
             // 
-            // textBox1
+            // getFileHash
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 162);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(246, 74);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "The hash will be displayed here";
+            this.getFileHash.Location = new System.Drawing.Point(6, 92);
+            this.getFileHash.Name = "getFileHash";
+            this.getFileHash.Size = new System.Drawing.Size(249, 23);
+            this.getFileHash.TabIndex = 1;
+            this.getFileHash.Text = "Get zip hash";
+            this.getFileHash.UseVisualStyleBackColor = true;
+            this.getFileHash.Click += new System.EventHandler(this.getFileHash_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(239, 39);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Use this tool to get the hash of a project\'s release\r\nfile so that SplameiPlay ca" +
+    "n install the project\r\ncorrectly.";
             // 
             // openFileDialog1
             // 
@@ -135,12 +135,14 @@ namespace SplameiPlay.Studio
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ToolSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SplameiPlay Studio - [Tools]";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.ToolSelect_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ToolSelect_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

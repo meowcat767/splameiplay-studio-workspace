@@ -6,6 +6,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -102,6 +103,11 @@ namespace SplameiPlay.Studio
 
                 wait.Close();
             }
+        }
+
+        private void ToolSelect_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            using (Process.Start("https://docs.veemo.uk")) { }
         }
     }
 }

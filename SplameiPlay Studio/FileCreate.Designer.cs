@@ -126,12 +126,14 @@ namespace SplameiPlay.Studio
             this.Controls.Add(this.filePresetList);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FileCreate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SplameiPlay Studio - [Create File]";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.FileCreate_HelpButtonClicked);
             this.Load += new System.EventHandler(this.FileCreate_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
