@@ -30,7 +30,7 @@ namespace SplameiPlay.Studio
 
         private void About_Load(object sender, EventArgs e)
         {
-            label2.Text = $"Version {Application.ProductVersion} - Pre-release 1";
+            label2.Text = $"Version {Application.ProductVersion}";
         }
     }
 }
