@@ -255,7 +255,7 @@ namespace SplameiPlay.Studio
         {
             if (string.IsNullOrEmpty(name)) { return false; }
 
-            return Regex.IsMatch(name, @"^[a-zA-Z0-9_ -]+$") && !name.Contains(" ");
+            return Regex.IsMatch(name, @"^[a-zA-Z0-9_-]+$");
         }
 
         private void addSectionButton_Click(object sender, EventArgs e)
