@@ -47,7 +47,6 @@ namespace SplameiPlay.Studio
                 {
                     resultHash = GlobalData.getDirectoryMd5Hash(folderBrowserDialog1.SelectedPath);
                     gotHash = true;
-
                 });
 
                 wait.Shown += async (s, args) =>
@@ -76,7 +75,6 @@ namespace SplameiPlay.Studio
             {
                 resultHash = GlobalData.getFileHash(openFileDialog1.FileName);
                 gotHash = true;
-
             });
 
             wait.Shown += async (s, args) =>

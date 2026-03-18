@@ -44,10 +44,7 @@ namespace SplameiPlay.Studio
             InitializeComponent();
         }
 
-        private void FileCreate_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void FileCreate_Load(object sender, EventArgs e) { }
 
         private void filePresetList_SelectedIndexChanged(object sender, EventArgs e)
         {
