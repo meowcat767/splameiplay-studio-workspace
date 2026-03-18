@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SplameiPlay Studio")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An app designed to make editing SplameiPlay Files and developing for SplameiPlay easier")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Splamei")]
 [assembly: AssemblyProduct("SplameiPlay Studio")]
-[assembly: AssemblyCopyright("Copyright ©  2026")]
+[assembly: AssemblyCopyright("MPL 2.0")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
