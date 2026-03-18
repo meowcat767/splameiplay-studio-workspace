@@ -484,6 +484,14 @@ namespace SplameiPlay.Studio
                 }
             }
         }
+
+        private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ToolSelect tools = new ToolSelect())
+            {
+                tools.ShowDialog();
+            }
+        }
     }
 }
 
