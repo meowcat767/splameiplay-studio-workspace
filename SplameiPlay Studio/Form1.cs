@@ -5,6 +5,7 @@
  */
 
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using SplameiPlay.SDK.Files;
 
@@ -130,6 +131,11 @@ namespace SplameiPlay.Studio
             {
                 about.ShowDialog();
             }
+        }
+
+        private void splameiDocsButton_Click(object sender, EventArgs e)
+        {
+            using (Process.Start("https://docs.veemo.uk/")) { }
         }
     }
 }
