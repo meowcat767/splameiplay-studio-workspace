@@ -32,7 +32,7 @@ namespace SplameiPlay.Studio
             }
         }
 
-        private void setCanCancel(Action actionOnCancel)
+        public void setCanCancel(Action actionOnCancel)
         {
             if (actionOnCancel == null)
             {

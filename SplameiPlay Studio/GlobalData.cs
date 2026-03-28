@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
 namespace SplameiPlay.Studio
 {
@@ -25,7 +26,7 @@ namespace SplameiPlay.Studio
             ReleaseData = 6
         }
 
-        public static string getDirectoryMd5Hash(string path)
+        public static string getDirectoryMd5Hash(string path, CancellationToken token = default)
         {
             using (var sha256Obj = SHA256.Create())
             {
@@ -33,6 +34,11 @@ namespace SplameiPlay.Studio
 
                 foreach (var filename in files)
                 {
+                    if (token != default)
+                    {
+                        token.ThrowIfCancellationRequested();
+                    }
+
                     var relPath = getRelativePath(path, filename);
                     var pathBytes = Encoding.UTF8.GetBytes(relPath.Replace("\\", "/"));
                     sha256Obj.TransformBlock(pathBytes, 0, pathBytes.Length, null, 0);

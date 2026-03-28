@@ -7,6 +7,8 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Security.Cryptography;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,6 +20,9 @@ namespace SplameiPlay.Studio
         bool gotHash = false;
 
         PleaseWait wait = new PleaseWait();
+
+        Task hashTask = null;
+        CancellationTokenSource cts = null;
 
         public ToolSelect()
         {
@@ -35,6 +40,8 @@ namespace SplameiPlay.Studio
             {
                 if (wait.IsDisposed) { wait = new PleaseWait(); }
 
+                cts = new CancellationTokenSource();
+
                 resultHash = string.Empty;
                 gotHash = false;
 
@@ -43,16 +50,35 @@ namespace SplameiPlay.Studio
                 timer1.Start();
                 wait.setMessage("Please wait while we get that directories hash");
 
-                var task = Task.Run(() =>
+                hashTask = Task.Run(() =>
                 {
-                    resultHash = GlobalData.getDirectoryMd5Hash(folderBrowserDialog1.SelectedPath);
-                    gotHash = true;
-                });
+                    try
+                    {
+                        resultHash = GlobalData.getDirectoryMd5Hash(folderBrowserDialog1.SelectedPath, cts.Token);
+                        gotHash = true;
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        Debug.WriteLine("[ToolSelect] Stopped getting the hash (task run exception)");
+                    }
+                }, cts.Token);
+
+                wait.setCanCancel(cancelHash);
 
                 wait.Shown += async (s, args) =>
                 {
-                    await task;
-                    wait.Close();
+                    try
+                    {
+                        await hashTask;
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        Debug.WriteLine("[ToolSelect] Stopped getting the hash (wait show catch)");
+                    }
+                    finally
+                    {
+                        wait.Close();
+                    }
                 };
 
                 wait.ShowDialog(this);
@@ -63,6 +89,8 @@ namespace SplameiPlay.Studio
         {
             if (wait.IsDisposed) { wait = new PleaseWait(); }
 
+            cts = new CancellationTokenSource();
+
             resultHash = string.Empty;
             gotHash = false;
 
@@ -71,7 +99,7 @@ namespace SplameiPlay.Studio
             timer1.Start();
             wait.setMessage("Please wait while we get that file's hash");
 
-            var task = Task.Run(() =>
+            hashTask = Task.Run(() =>
             {
                 resultHash = GlobalData.getFileHash(openFileDialog1.FileName);
                 gotHash = true;
@@ -79,7 +107,7 @@ namespace SplameiPlay.Studio
 
             wait.Shown += async (s, args) =>
             {
-                await task;
+                await hashTask;
                 wait.Close();
             };
 
@@ -89,6 +117,21 @@ namespace SplameiPlay.Studio
         private void ToolSelect_FormClosing(object sender, FormClosingEventArgs e)
         {
             wait.Dispose();
+
+            if (hashTask != null && !hashTask.IsCompleted)
+            {
+                cts?.Cancel();
+            }
+
+            if (hashTask != null)
+            {
+                hashTask.Dispose();
+            }
+
+            if (cts != null)
+            {
+                cts.Dispose();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -106,6 +149,23 @@ namespace SplameiPlay.Studio
         private void ToolSelect_HelpButtonClicked(object sender, CancelEventArgs e)
         {
             using (Process.Start("https://docs.veemo.uk")) { }
+        }
+
+        private async void cancelHash()
+        {
+            cts?.Cancel();
+
+            try
+            {
+                wait.setMessage("");
+                wait.setCanCancel(null);
+                await hashTask;
+            }
+            catch (OperationCanceledException) { }
+            finally
+            {
+                wait.Close();
+            }
         }
     }
 }
