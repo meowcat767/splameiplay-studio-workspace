@@ -71,7 +71,33 @@ This section presumes you have the .NET (Framework) SDKs, Windows SDKs and Git i
 3. Build the code by pressing `Build > Build SplameiPlay Studio` or CTRL + B
 4. The build files should be located in `<Repo directory>\bin\Debug\SplameiPlay Studio.exe`
 
-### MSBuild
+### .NET CLI (Cross-platform)
+
+1. Clone the repo: `git clone https://github.com/splameiplay/splameiplay-studio.git`
+2. Change into the directory: `cd splameiplay-studio`
+3. Build the project: `dotnet build`
+4. On Windows, the GUI app will be built. On Linux, a CLI tool is built.
+
+### Running the GUI on Linux (Wine)
+
+You can run the full GUI on Linux using Wine. A special `Wine` configuration is provided for this purpose.
+
+1. Ensure you have Wine installed.
+2. Build the Wine-compatible version:
+   ```bash
+   dotnet build -c Wine -r win-x64 --self-contained true
+   ```
+3. Run it using Wine:
+   ```bash
+   wine "SplameiPlay Studio/bin/Wine/net8.0-windows/win-x64/SplameiPlay Studio.exe"
+   ```
+
+### Using the CLI (Linux/macOS)
+
+The Linux build includes a basic CLI for common tasks.
+- Get file/directory hash: `dotnet run -c Linux -- --hash <path>` or run the built binary with the same arguments.
+
+### MSBuild (Windows)
 
 1. Clone the repo by running `git clone https://github.com/splameiplay/splameiplay-studio.git` in the target directory
 2. Change into the directory via `cd splameiplay-studio`

@@ -1,16 +1,38 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Configurations>Debug;Release;Linux;Wine</Configurations>
+    <Platforms>AnyCPU</Platforms>
+    <IsLinux>$([MSBuild]::IsOSPlatform('Linux'))</IsLinux>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Linux' And '$(Configuration)' != 'Wine' And '$(IsLinux)' != 'true'">
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Linux' Or ('$(Configuration)' != 'Linux' And '$(Configuration)' != 'Wine' And '$(IsLinux)' == 'true')">
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Wine'">
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <DefineConstants>$(DefineConstants);WINE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <RootNamespace>SplameiPlay.Studio</RootNamespace>
     <AssemblyName>SplameiPlay Studio</AssemblyName>
     <Nullable>disable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
     <ApplicationIcon>SplameiPlay Studio.ico</ApplicationIcon>
-    <Platforms>AnyCPU</Platforms>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
@@ -20,7 +42,7 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' != 'Linux' And '$(Configuration)' != 'Wine' And '$(IsLinux)' != 'true'">
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -30,9 +52,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Resources\SplameiPlay Studio.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Linux' Or ('$(Configuration)' != 'Linux' And '$(Configuration)' != 'Wine' And '$(IsLinux)' == 'true')">
+    <Compile Remove="**/*.cs" />
+    <EmbeddedResource Remove="**/*.resx" />
+    <Compile Include="Program.cs" />
+    <Compile Include="GlobalData.cs" />
+    <!-- Add other non-UI files if any -->
   </ItemGroup>
 
 </Project>
