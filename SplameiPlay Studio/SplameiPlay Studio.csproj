@@ -68,4 +68,8 @@
     <!-- Add other non-UI files if any -->
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="InstallerInfo.cs" />
+  </ItemGroup>
+
 </Project>
