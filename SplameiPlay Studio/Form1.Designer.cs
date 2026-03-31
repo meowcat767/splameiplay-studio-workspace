@@ -69,8 +69,14 @@ namespace SplameiPlay.Studio
             // 
             // useWizardButton
             //
-            this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.createButton.Location = new System.Drawing.Point(19, 51);
+            this.useWizardButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.useWizardButton.Location = new System.Drawing.Point(19, 51);
+			this.useWizardButton.Name = "useWizardButton";
+			this.useWizardButton.Size = new System.Drawing.Size(293, 88);
+			this.useWizardButton.TabIndex = 3;
+			this.useWizardButton.Text = "Use Wizard";
+			this.useWizardButton.UseVisualStyleBackColor = true;
+			this.createButton.Click += new System.EventHandler(this.useWizardButton_Click);
             // 
             // openButton
             // 
@@ -78,7 +84,7 @@ namespace SplameiPlay.Studio
             this.openButton.Location = new System.Drawing.Point(17, 145);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(294, 88);
-            this.openButton.TabIndex = 3;
+            this.openButton.TabIndex = 4;
             this.openButton.Text = "Open existing file";
             this.openButton.UseVisualStyleBackColor = true;
             this.openButton.Click += new System.EventHandler(this.openButton_Click);
@@ -89,7 +95,7 @@ namespace SplameiPlay.Studio
             this.toolsButton.Location = new System.Drawing.Point(18, 239);
             this.toolsButton.Name = "toolsButton";
             this.toolsButton.Size = new System.Drawing.Size(294, 88);
-            this.toolsButton.TabIndex = 4;
+            this.toolsButton.TabIndex = 5;
             this.toolsButton.Text = "Tools";
             this.toolsButton.UseVisualStyleBackColor = true;
             this.toolsButton.Click += new System.EventHandler(this.toolsButton_Click);
@@ -100,7 +106,7 @@ namespace SplameiPlay.Studio
             this.quitButton.Location = new System.Drawing.Point(16, 333);
             this.quitButton.Name = "quitButton";
             this.quitButton.Size = new System.Drawing.Size(95, 44);
-            this.quitButton.TabIndex = 5;
+            this.quitButton.TabIndex = 6;
             this.quitButton.Text = "Quit";
             this.quitButton.UseVisualStyleBackColor = true;
             this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
@@ -116,7 +122,7 @@ namespace SplameiPlay.Studio
             this.splameiDocsButton.Location = new System.Drawing.Point(117, 333);
             this.splameiDocsButton.Name = "splameiDocsButton";
             this.splameiDocsButton.Size = new System.Drawing.Size(95, 44);
-            this.splameiDocsButton.TabIndex = 6;
+            this.splameiDocsButton.TabIndex = 7;
             this.splameiDocsButton.Text = "Splamei Docs";
             this.splameiDocsButton.UseVisualStyleBackColor = true;
             this.splameiDocsButton.Click += new System.EventHandler(this.splameiDocsButton_Click);
@@ -127,7 +133,7 @@ namespace SplameiPlay.Studio
             this.label2.Location = new System.Drawing.Point(18, 384);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(259, 39);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 8;
             this.label2.Text = "SplameiPlay Studio is intended for project developers,\r\ndistributors and system a" +
     "dministrators and is not for\r\ngeneral public use.";
             // 
@@ -137,7 +143,7 @@ namespace SplameiPlay.Studio
             this.aboutButton.Location = new System.Drawing.Point(217, 333);
             this.aboutButton.Name = "aboutButton";
             this.aboutButton.Size = new System.Drawing.Size(95, 44);
-            this.aboutButton.TabIndex = 8;
+            this.aboutButton.TabIndex = 9;
             this.aboutButton.Text = "About";
             this.aboutButton.UseVisualStyleBackColor = true;
             this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
@@ -173,6 +179,7 @@ namespace SplameiPlay.Studio
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button createButton;
+		private System.Windows.Forms.Button useWizardButton;
         private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.Button toolsButton;
         private System.Windows.Forms.Button quitButton;
